@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ![React-Responsive-Login-Page-Using-Tailwind-CSS](https://user-images.githubusercontent.com/82109268/194751278-3fd57560-5d0a-4434-9e15-cf5979d6cd0c.jpg)
 # Getting Started with Create React App
 
@@ -69,3 +70,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# FinSight-AI
+>>>>>>> 1ef40f266641f8e55521de57ae544bbcf8608c31

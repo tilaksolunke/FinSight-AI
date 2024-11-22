@@ -17,7 +17,6 @@ export default function Dashboard() {
     { name: 'May', value: 55000 },
   ]);
 
-  // Sample stocks data
   const [stocks, setStocks] = useState([
     { 
       symbol: 'AAPL', 
@@ -45,7 +44,6 @@ export default function Dashboard() {
     }
   ]);
 
-  // Sample stock news
   const [news, setNews] = useState([
     {
       id: 1,
@@ -67,7 +65,6 @@ export default function Dashboard() {
     }
   ]);
 
-  // Chatbot state
   const [messages, setMessages] = useState([
     { 
       id: 1, 
@@ -94,32 +91,32 @@ export default function Dashboard() {
   };
 
   return (
-    <div className='min-h-screen bg-gray-900 p-6'>
+    <div className='min-h-screen bg-neutral-900 p-6'>
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
         {/* Portfolio Overview */}
-        <div className='bg-gray-800 rounded-lg p-6 col-span-2'>
+        <div className='bg-black rounded-lg p-6 col-span-2 border border-red-600/20'>
           <div className='flex justify-between items-center mb-4'>
             <h2 className='text-2xl text-white font-bold'>Portfolio Performance</h2>
-            <button className='text-teal-400 hover:text-teal-300'>
+            <button className='text-red-500 hover:text-red-400'>
               <RefreshCw size={20} />
             </button>
           </div>
           <ResponsiveContainer width='100%' height={300}>
             <LineChart data={portfolioData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-              <XAxis dataKey="name" stroke="#888" />
-              <YAxis stroke="#888" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+              <XAxis dataKey="name" stroke="#666" />
+              <YAxis stroke="#666" />
               <Tooltip 
                 contentStyle={{ 
-                  backgroundColor: '#333', 
-                  border: 'none', 
+                  backgroundColor: '#1a1a1a', 
+                  border: '1px solid #dc2626', 
                   color: 'white' 
                 }} 
               />
               <Line 
                 type="monotone" 
                 dataKey="value" 
-                stroke="#10b981" 
+                stroke="#dc2626" 
                 strokeWidth={3} 
               />
             </LineChart>
@@ -127,22 +124,22 @@ export default function Dashboard() {
         </div>
 
         {/* Stocks Watchlist */}
-        <div className='bg-gray-800 rounded-lg p-6'>
+        <div className='bg-black rounded-lg p-6 border border-red-600/20'>
           <h2 className='text-2xl text-white font-bold mb-4'>Watchlist</h2>
           {stocks.map((stock) => (
             <div 
               key={stock.symbol} 
-              className='flex justify-between items-center mb-3 p-3 bg-gray-700 rounded-lg'
+              className='flex justify-between items-center mb-3 p-3 bg-neutral-800 rounded-lg hover:bg-neutral-700 transition-colors'
             >
               <div>
                 <p className='text-white font-semibold'>{stock.symbol}</p>
-                <p className='text-gray-400 text-sm'>{stock.name}</p>
+                <p className='text-neutral-400 text-sm'>{stock.name}</p>
               </div>
               <div className='text-right'>
                 <p className='text-white font-semibold'>${stock.price.toFixed(2)}</p>
-                <p className={`text-sm ${stock.status === 'up' ? 'text-green-500' : 'text-red-500'}`}>
+                <p className={`text-sm flex items-center justify-end ${stock.status === 'up' ? 'text-green-500' : 'text-red-500'}`}>
                   {stock.change > 0 ? '+' : ''}{stock.change.toFixed(2)} ({stock.changePercent.toFixed(2)}%)
-                  {stock.status === 'up' ? <TrendingUp size={14} className='inline ml-1' /> : <TrendingDown size={14} className='inline ml-1' />}
+                  {stock.status === 'up' ? <TrendingUp size={14} className='ml-1' /> : <TrendingDown size={14} className='ml-1' />}
                 </p>
               </div>
             </div>
@@ -150,15 +147,15 @@ export default function Dashboard() {
         </div>
 
         {/* News Section */}
-        <div className='bg-gray-800 rounded-lg p-6 col-span-2'>
+        <div className='bg-black rounded-lg p-6 col-span-2 border border-red-600/20'>
           <h2 className='text-2xl text-white font-bold mb-4'>Latest Financial News</h2>
           {news.map((item) => (
             <div 
               key={item.id} 
-              className='bg-gray-700 rounded-lg p-4 mb-3'
+              className='bg-neutral-800 rounded-lg p-4 mb-3 hover:bg-neutral-700 transition-colors'
             >
               <h3 className='text-white font-semibold'>{item.title}</h3>
-              <div className='flex justify-between text-gray-400 text-sm mt-2'>
+              <div className='flex justify-between text-neutral-400 text-sm mt-2'>
                 <span>{item.source}</span>
                 <span>{item.time}</span>
               </div>
@@ -167,10 +164,10 @@ export default function Dashboard() {
         </div>
 
         {/* AI Chatbot */}
-        <div className='bg-gray-800 rounded-lg p-6'>
+        <div className='bg-black rounded-lg p-6 border border-red-600/20'>
           <div className='flex justify-between items-center mb-4'>
             <h2 className='text-2xl text-white font-bold'>FinSight AI Assistant</h2>
-            <Bell size={20} className='text-teal-400' />
+            <Bell size={20} className='text-red-500' />
           </div>
           <div className='h-64 overflow-y-auto mb-4 pr-2'>
             {messages.map((message) => (
@@ -178,8 +175,8 @@ export default function Dashboard() {
                 key={message.id} 
                 className={`mb-3 p-3 rounded-lg max-w-[80%] ${
                   message.type === 'bot' 
-                    ? 'bg-gray-700 text-white self-start' 
-                    : 'bg-teal-600 text-white self-end ml-auto'
+                    ? 'bg-neutral-800 text-white self-start' 
+                    : 'bg-red-600 text-white self-end ml-auto'
                 }`}
               >
                 {message.text}
@@ -192,11 +189,11 @@ export default function Dashboard() {
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
               placeholder="Ask about your investments..."
-              className='flex-grow bg-gray-700 text-white p-2 rounded-l-lg focus:outline-none'
+              className='flex-grow bg-neutral-800 text-white p-2 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-red-500'
             />
             <button 
               onClick={handleSendMessage}
-              className='bg-teal-500 text-white p-2 rounded-r-lg'
+              className='bg-red-600 hover:bg-red-700 text-white p-2 rounded-r-lg transition-colors'
             >
               <MessageCircle size={20} />
             </button>

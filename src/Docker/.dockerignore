@@ -1,0 +1,32 @@
+# Version control
+.git
+.gitignore
+
+# IDE specific files
+.idea
+.vscode
+*.swp
+*.swo
+
+# Build files
+bin/
+tmp/
+
+# Local development
+docker-compose.override.yml
+
+# Go specific
+vendor/
+*.test
+*.out
+
+# Logs
+*.log
+
+# Local env files
+.env.local
+.env.*.local
+
+# OS specific
+.DS_Store
+Thumbs.db
